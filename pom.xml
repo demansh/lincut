@@ -20,6 +20,7 @@
         <module>configuration</module>
         <module>bom</module>
         <module>in-memory-persistence</module>
+        <module>integration-tests</module>
     </modules>
 
 </project>

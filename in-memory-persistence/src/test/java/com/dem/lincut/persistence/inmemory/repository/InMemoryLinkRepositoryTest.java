@@ -1,6 +1,5 @@
 package com.dem.lincut.persistence.inmemory.repository;
 
-
 import com.dem.lincut.core.adapters.LinkRepository;
 import com.dem.lincut.core.model.Link;
 import org.junit.Assert;
