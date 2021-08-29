@@ -1,13 +1,13 @@
 package com.dem.lincut.core.model;
 
 import com.dem.lincut.core.adapters.LinkRepository;
+import com.dem.lincut.core.exceptions.InvalidParameterException;
+import com.dem.lincut.core.exceptions.LinkNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class DefaultLinkService implements LinkService {
@@ -20,18 +20,24 @@ public class DefaultLinkService implements LinkService {
 
     @Override
     public Link createLink(String url) {
-        Objects.requireNonNull(url, "Null url passed");
+        if (url == null) {
+            throw new InvalidParameterException("Null url passed");
+        }
         try {
             URL validUrl = new URL(url);
             return linkRepository.create(validUrl.toString());
         } catch (MalformedURLException e) {
-            throw new RuntimeException("Malformed url");
+            throw new InvalidParameterException("Malformed url");
         }
     }
 
     @Override
-    public Optional<Link> getLinkByToken(String token) {
-        Objects.requireNonNull(token, "Null token passed");
-        return linkRepository.getByToken(token);
+    public Link getLinkByToken(String token) {
+        if (token == null) {
+            throw new InvalidParameterException("Null token passed");
+        }
+        return linkRepository
+                .getByToken(token)
+                .orElseThrow(() -> new LinkNotFoundException(token));
     }
 }

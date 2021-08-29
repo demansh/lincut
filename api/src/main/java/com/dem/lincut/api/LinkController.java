@@ -1,12 +1,10 @@
 package com.dem.lincut.api;
 
 import com.dem.lincut.api.resources.LinkResource;
+import com.dem.lincut.api.resources.LinkResourceAssembler;
 import com.dem.lincut.core.model.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(
@@ -21,6 +19,15 @@ public class LinkController {
         this.linkService = linkService;
     }
 
-    @GetMapping
-    public LinkResource getLink()
+    @GetMapping("/{token}")
+    public LinkResource getLink(@PathVariable("token") String token) {
+        return new LinkResourceAssembler()
+                .toResource(linkService.getLinkByToken(token));
+    }
+
+    @PostMapping
+    public LinkResource createLink(@RequestParam("url") String url) {
+        return new LinkResourceAssembler()
+                .toResource(linkService.createLink(url));
+    }
 }
