@@ -1,15 +1,19 @@
 package com.dem.lincut.core.model;
 
 import com.dem.lincut.core.adapters.LinkRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 
+@Service
 public class DefaultLinkService implements LinkService {
     private final LinkRepository linkRepository;
 
+    @Autowired
     public DefaultLinkService(LinkRepository linkRepository) {
         this.linkRepository = linkRepository;
     }

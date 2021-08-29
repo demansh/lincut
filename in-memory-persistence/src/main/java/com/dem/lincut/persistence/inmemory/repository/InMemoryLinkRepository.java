@@ -3,11 +3,13 @@ package com.dem.lincut.persistence.inmemory.repository;
 import com.dem.lincut.core.adapters.LinkRepository;
 import com.dem.lincut.core.model.Link;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class InMemoryLinkRepository implements LinkRepository {
     private final Map<String, Link> repository = new ConcurrentHashMap<>();
 

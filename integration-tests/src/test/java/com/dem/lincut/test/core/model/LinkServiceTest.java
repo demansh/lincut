@@ -1,4 +1,4 @@
-package com.dem.lincut.core.model.test;
+package com.dem.lincut.test.core.model;
 
 import com.dem.lincut.core.model.DefaultLinkService;
 import com.dem.lincut.core.model.Link;

@@ -21,6 +21,7 @@
         <module>bom</module>
         <module>in-memory-persistence</module>
         <module>integration-tests</module>
+        <module>api</module>
     </modules>
 
 </project>
