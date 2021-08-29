@@ -17,9 +17,11 @@
         <junit.vesion>4.13.2</junit.vesion>
         <apachecommons.version>3.8.1</apachecommons.version>
         <spring.version>5.2.16.RELEASE</spring.version>
-        <spring.boot.version>2.5.4</spring.boot.version>
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <spring.boot.web.version>2.5.4</spring.boot.web.version>
         <spring.hateoas.version>0.25.0.RELEASE</spring.hateoas.version>
         <lombok.version>1.16.22</lombok.version>
+        <log4j.version>2.14.1</log4j.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +47,11 @@
                 <groupId>org.springframework.hateoas</groupId>
                 <artifactId>spring-hateoas</artifactId>
                 <version>${spring.hateoas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.web.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
