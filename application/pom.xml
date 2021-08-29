@@ -11,9 +11,52 @@
 
     <artifactId>application</artifactId>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dem.lincut</groupId>
+                <artifactId>bom</artifactId>
+                <version>1.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dem.lincut</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dem.lincut</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dem.lincut</groupId>
+            <artifactId>in-memory-persistence</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
