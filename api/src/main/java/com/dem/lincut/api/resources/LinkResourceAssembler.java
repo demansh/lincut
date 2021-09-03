@@ -13,6 +13,9 @@ public class LinkResourceAssembler extends
 
     @Override
     public LinkResource toResource(Link link) {
-        return createResourceWithId(link.getToken(), link);
+        LinkResource linkResource = createResourceWithId(link.getToken(), link);
+        linkResource.setToken(link.getToken());
+        linkResource.setOriginalUlr(link.getOriginalUrl());
+        return linkResource;
     }
 }
