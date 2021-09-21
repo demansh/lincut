@@ -35,8 +35,8 @@
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
         </dependency>
 
         <dependency>
