@@ -1,5 +1,4 @@
-server.port=9999
-spring:
-    data:
-        rest:
-            base-path: /api/v1
+server:
+    port: 9999
+    servlet:
+        context-path: "/api/v1"
