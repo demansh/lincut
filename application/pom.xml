@@ -23,22 +23,18 @@
         <dependency>
             <groupId>com.dem.lincut</groupId>
             <artifactId>api</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.dem.lincut</groupId>
             <artifactId>core</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.dem.lincut</groupId>
             <artifactId>in-memory-persistence</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.dem.lincut</groupId>
             <artifactId>configuration</artifactId>
-            <version>1.0</version>
         </dependency>
     </dependencies>
 
