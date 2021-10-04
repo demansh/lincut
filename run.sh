@@ -1,3 +1,3 @@
 mvn clean install -DskipTests
 cd application
-mvn spring-boot:run
+mvn spring-boot:run -P mem

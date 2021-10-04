@@ -24,6 +24,21 @@
         <module>api</module>
     </modules>
 
+    <profiles>
+        <profile>
+            <id>mem</id>
+            <modules>
+                <module>in-memory-persistence</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>sql</id>
+            <modules>
+                <module>sql-persistence</module>
+            </modules>
+        </profile>
+    </profiles>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
