@@ -53,7 +53,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sql-persistance</artifactId>
+                <artifactId>sql-persistence</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -93,6 +93,11 @@
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq</artifactId>
                 <version>3.15.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.191</version>
             </dependency>
 
             <dependency>
