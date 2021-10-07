@@ -37,6 +37,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>configuration</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -48,6 +52,12 @@
                     <artifactId>in-memory-persistence</artifactId>
                 </dependency>
             </dependencies>
+            <properties>
+                <springProfile>mem</springProfile>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
         <profile>
             <id>sql</id>
@@ -57,6 +67,9 @@
                     <artifactId>sql-persistence</artifactId>
                 </dependency>
             </dependencies>
+            <properties>
+                <springProfile>sql</springProfile>
+            </properties>
         </profile>
     </profiles>
 
