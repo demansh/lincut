@@ -2,21 +2,24 @@ package com.dem.lincut.application;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.MutablePropertySources;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.stream.StreamSupport;
 
-@Component
+//@Component
 public class PropertyLogger  {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyLogger.class);
+
+    @Autowired
+    private Environment environment;
 
     @EventListener
     public void handleContextRefresh(ContextRefreshedEvent event) {
@@ -31,6 +34,9 @@ public class PropertyLogger  {
                 .distinct()
                 .filter(prop -> !(prop.contains("credentials") || prop.contains("password")))
                 .forEach(prop -> LOGGER.info("{}: {}", prop, env.getProperty(prop)));
+        for (String profileName : environment.getActiveProfiles()) {
+            LOGGER.info("Currently active profile - {}", profileName);
+        }
         LOGGER.info("===========================================");
     }
 }
