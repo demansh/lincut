@@ -9,15 +9,15 @@ spring:
       on-profile: "sql"
   flyway:
     user: "sa"
-    password: "password"
+    password: ""
     schemas: "app-db"
-    url: "jdbc:h2:mem:testdb"
+    url: "jdbc:h2:mem:test"
     locations: "filesystem:db/migration"
   datasource:
-    url: "jdbc:h2:mem:testdb"
+    url: "jdbc:h2:mem:test"
     driverClassName: "org.h2.Driver"
     username: "sa"
-    password: "password"
+    password: ""
   h2:
     console:
       enabled: true
