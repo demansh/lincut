@@ -17,7 +17,6 @@
     <modules>
         <module>core</module>
         <module>application</module>
-        <module>configuration</module>
         <module>bom</module>
         <module>in-memory-persistence</module>
         <module>test</module>
