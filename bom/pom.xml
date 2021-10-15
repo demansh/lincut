@@ -97,17 +97,27 @@
             <dependency>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq</artifactId>
-                <version>3.6.4</version>
+                <version>3.15.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-meta</artifactId>
-                <version>3.6.4</version>
+                <version>3.15.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen</artifactId>
-                <version>3.6.4</version>
+                <version>3.15.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>3.15.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-meta-extensions</artifactId>
+                <version>3.15.3</version>
             </dependency>
             <dependency>
                 <groupId>org.flywaydb</groupId>
