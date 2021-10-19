@@ -16,7 +16,6 @@ spring:
     baseline-on-migrate: true
   datasource:
     url: "jdbc:h2:~/test"
-    schema: "public"
     driverClassName: "org.h2.Driver"
     username: "sa"
     password: ""

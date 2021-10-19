@@ -36,6 +36,15 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -82,7 +91,7 @@
                                 </database>
                                 <target>
                                     <clean>true</clean>
-                                    <packageName>ch.rasc.sbjooqflyway.db</packageName>
+                                    <packageName>com.dem.lincut.persistence.sqlpersistence.repository</packageName>
                                     <directory>target/generated-sources/jooq</directory>
                                 </target>
                             </generator>
