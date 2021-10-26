@@ -70,7 +70,7 @@
             <dependency>
                 <groupId>org.springframework.hateoas</groupId>
                 <artifactId>spring-hateoas</artifactId>
-                <version>0.25.0.RELEASE</version>
+                <version>${spring-hateoas.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
