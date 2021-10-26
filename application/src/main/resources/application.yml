@@ -10,7 +10,6 @@ spring:
   flyway:
     user: "sa"
     password: ""
-    schemas: "public"
     url: "jdbc:h2:~/test"
     locations: "classpath:db/migration"
     baseline-on-migrate: true
