@@ -4,7 +4,11 @@ import com.dem.lincut.api.resources.LinkModel;
 import com.dem.lincut.api.resources.LinkModelAssembler;
 import com.dem.lincut.core.model.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(
@@ -17,6 +21,14 @@ public class LinkController {
     @Autowired
     public LinkController(LinkService linkService) {
         this.linkService = linkService;
+    }
+
+    @GetMapping
+    public CollectionModel<LinkModel> getAll() {
+        List<LinkModel> links = linkService.getAll().stream()
+                .map(link -> new LinkModelAssembler().toModel(link))
+                .collect(Collectors.toList());
+        return new LinkModelAssembler().toCollectionModel(linkService.getAll());
     }
 
     @GetMapping("/{token}")

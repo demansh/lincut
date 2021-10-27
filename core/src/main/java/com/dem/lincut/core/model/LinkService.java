@@ -1,10 +1,14 @@
 package com.dem.lincut.core.model;
 
+import java.util.List;
+
 /**
  * Service to manipulate links: perform CRUD operations with validation
  */
 public interface LinkService {
-    Link createLink(String url);
+    ShortLink createLink(String url);
 
-    Link getLinkByToken(String token);
+    ShortLink getLinkByToken(String token);
+
+    List<ShortLink> getAll();
 }

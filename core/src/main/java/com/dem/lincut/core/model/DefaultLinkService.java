@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 @Service
 public class DefaultLinkService implements LinkService {
@@ -19,7 +20,7 @@ public class DefaultLinkService implements LinkService {
     }
 
     @Override
-    public Link createLink(String url) {
+    public ShortLink createLink(String url) {
         if (url == null) {
             throw new InvalidParameterException("Null url passed");
         }
@@ -32,12 +33,17 @@ public class DefaultLinkService implements LinkService {
     }
 
     @Override
-    public Link getLinkByToken(String token) {
+    public ShortLink getLinkByToken(String token) {
         if (token == null) {
             throw new InvalidParameterException("Null token passed");
         }
         return linkRepository
                 .getByToken(token)
                 .orElseThrow(() -> new LinkNotFoundException(token));
+    }
+
+    @Override
+    public List<ShortLink> getAll() {
+        return linkRepository.getAll();
     }
 }

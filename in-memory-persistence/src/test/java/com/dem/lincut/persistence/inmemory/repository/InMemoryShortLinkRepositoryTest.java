@@ -1,12 +1,12 @@
 package com.dem.lincut.persistence.inmemory.repository;
 
 import com.dem.lincut.core.adapters.LinkRepository;
-import com.dem.lincut.core.model.Link;
+import com.dem.lincut.core.model.ShortLink;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class InMemoryLinkRepositoryTest {
+public class InMemoryShortLinkRepositoryTest {
     private LinkRepository linkRepository;
 
     @Before
@@ -18,7 +18,7 @@ public class InMemoryLinkRepositoryTest {
     public void createLink_shouldReturnLink_whenUrlProvided() {
         String url = "http://foobar.com";
 
-        Link result = linkRepository.create(url);
+        ShortLink result = linkRepository.create(url);
 
         Assert.assertEquals(url, result.getOriginalUrl());
         Assert.assertFalse(result.getToken().isEmpty());
@@ -27,12 +27,12 @@ public class InMemoryLinkRepositoryTest {
     @Test
     public void getByToken_shouldReturnLink_whenValidTokenProvided() {
         String url = "http://foobar.com";
-        Link link = linkRepository.create(url);
-        String token = link.getToken();
+        ShortLink shortLink = linkRepository.create(url);
+        String token = shortLink.getToken();
 
-        Link result = linkRepository.getByToken(token).get();
+        ShortLink result = linkRepository.getByToken(token).get();
 
-        Assert.assertEquals(link, result);
+        Assert.assertEquals(shortLink, result);
     }
 
     @Test

@@ -3,14 +3,14 @@ package com.dem.lincut.test.core.model;
 import com.dem.lincut.core.exceptions.InvalidParameterException;
 import com.dem.lincut.core.exceptions.LinkNotFoundException;
 import com.dem.lincut.core.model.DefaultLinkService;
-import com.dem.lincut.core.model.Link;
+import com.dem.lincut.core.model.ShortLink;
 import com.dem.lincut.core.model.LinkService;
 import com.dem.lincut.persistence.inmemory.repository.InMemoryLinkRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LinkServiceTest {
+public class ShortLinkServiceTest {
     private LinkService linkService;
 
     @Before
@@ -45,10 +45,10 @@ public class LinkServiceTest {
 
     @Test
     public void getByToken_shouldReturnLink_ifTokenIsValid() {
-        Link link = linkService.createLink("https://google.com");
+        ShortLink shortLink = linkService.createLink("https://google.com");
 
-        Link result = linkService.getLinkByToken(link.getToken());
+        ShortLink result = linkService.getLinkByToken(shortLink.getToken());
 
-        Assert.assertEquals(link, result);
+        Assert.assertEquals(shortLink, result);
     }
 }

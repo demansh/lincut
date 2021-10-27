@@ -1,8 +1,8 @@
 package com.dem.lincut.api.resources;
 
-import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.RepresentationModel;
 
-public class LinkModel extends EntityModel<LinkModel> {
+public class LinkModel extends RepresentationModel<LinkModel> {
     private String originalUlr;
     private String token;
 
