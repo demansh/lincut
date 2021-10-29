@@ -2,52 +2,52 @@ package com.dem.lincut.test.core.model;
 
 import com.dem.lincut.core.exceptions.InvalidParameterException;
 import com.dem.lincut.core.exceptions.LinkNotFoundException;
-import com.dem.lincut.core.model.DefaultLinkService;
+import com.dem.lincut.core.model.DefaultShortLinkService;
 import com.dem.lincut.core.model.ShortLink;
-import com.dem.lincut.core.model.LinkService;
-import com.dem.lincut.persistence.inmemory.repository.InMemoryLinkRepository;
+import com.dem.lincut.core.model.ShortLinkService;
+import com.dem.lincut.persistence.inmemory.repository.InMemoryShortLinkRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ShortLinkServiceTest {
-    private LinkService linkService;
+public class ShortShortLinkServiceTest {
+    private ShortLinkService shortLinkService;
 
     @Before
     public void setUp() {
-        linkService = new DefaultLinkService(new InMemoryLinkRepository());
+        shortLinkService = new DefaultShortLinkService(new InMemoryShortLinkRepository());
     }
 
     @Test(expected = InvalidParameterException.class)
     public void createLink_shouldThrow_ifNullUrlPassed() {
-        linkService.createLink(null);
+        shortLinkService.createLink(null);
     }
 
     @Test(expected = InvalidParameterException.class)
     public void createLink_shouldThrow_ifMalformedUrlPassed() {
-        linkService.createLink("not-a-url");
+        shortLinkService.createLink("not-a-url");
     }
 
     @Test
     public void createLink_shouldNotThrow_ifValidUrlPassed() {
-        linkService.createLink("https://google.com");
+        shortLinkService.createLink("https://google.com");
     }
 
     @Test(expected = InvalidParameterException.class)
     public void getByToken_shouldThrow_ifNullTokenPassed() {
-        linkService.getLinkByToken(null);
+        shortLinkService.getLinkByToken(null);
     }
 
     @Test(expected = LinkNotFoundException.class)
     public void getByToken_shouldThrow_ifNoUrlFound() {
-        linkService.getLinkByToken("42");
+        shortLinkService.getLinkByToken("42");
     }
 
     @Test
     public void getByToken_shouldReturnLink_ifTokenIsValid() {
-        ShortLink shortLink = linkService.createLink("https://google.com");
+        ShortLink shortLink = shortLinkService.createLink("https://google.com");
 
-        ShortLink result = linkService.getLinkByToken(shortLink.getToken());
+        ShortLink result = shortLinkService.getLinkByToken(shortLink.getToken());
 
         Assert.assertEquals(shortLink, result);
     }

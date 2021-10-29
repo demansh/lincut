@@ -1,8 +1,9 @@
 package com.dem.lincut.persistence.inmemory.repository;
 
-import com.dem.lincut.core.adapters.LinkRepository;
+import com.dem.lincut.core.adapters.ShortLinkRepository;
 import com.dem.lincut.core.model.ShortLink;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
-public class InMemoryLinkRepository implements LinkRepository {
+public class InMemoryShortLinkRepository implements ShortLinkRepository {
     private final Map<String, ShortLink> repository = new ConcurrentHashMap<>();
 
     @Override
@@ -33,7 +34,7 @@ public class InMemoryLinkRepository implements LinkRepository {
     }
 
     @Override
-    public List<ShortLink> getAll() {
+    public List<ShortLink> getAll(Pageable pageable) {
         return new ArrayList<>(repository.values());
     }
 

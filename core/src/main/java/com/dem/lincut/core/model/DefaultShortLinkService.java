@@ -1,9 +1,10 @@
 package com.dem.lincut.core.model;
 
-import com.dem.lincut.core.adapters.LinkRepository;
+import com.dem.lincut.core.adapters.ShortLinkRepository;
 import com.dem.lincut.core.exceptions.InvalidParameterException;
 import com.dem.lincut.core.exceptions.LinkNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -11,12 +12,12 @@ import java.net.URL;
 import java.util.List;
 
 @Service
-public class DefaultLinkService implements LinkService {
-    private final LinkRepository linkRepository;
+public class DefaultShortLinkService implements ShortLinkService {
+    private final ShortLinkRepository shortLinkRepository;
 
     @Autowired
-    public DefaultLinkService(LinkRepository linkRepository) {
-        this.linkRepository = linkRepository;
+    public DefaultShortLinkService(ShortLinkRepository shortLinkRepository) {
+        this.shortLinkRepository = shortLinkRepository;
     }
 
     @Override
@@ -26,7 +27,7 @@ public class DefaultLinkService implements LinkService {
         }
         try {
             URL validUrl = new URL(url);
-            return linkRepository.create(validUrl.toString());
+            return shortLinkRepository.create(validUrl.toString());
         } catch (MalformedURLException e) {
             throw new InvalidParameterException("Malformed url");
         }
@@ -37,13 +38,13 @@ public class DefaultLinkService implements LinkService {
         if (token == null) {
             throw new InvalidParameterException("Null token passed");
         }
-        return linkRepository
+        return shortLinkRepository
                 .getByToken(token)
                 .orElseThrow(() -> new LinkNotFoundException(token));
     }
 
     @Override
-    public List<ShortLink> getAll() {
-        return linkRepository.getAll();
+    public List<ShortLink> getAll(Pageable pageable) {
+        return shortLinkRepository.getAll(pageable);
     }
 }
