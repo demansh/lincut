@@ -17,11 +17,11 @@ public class ShortLink {
         this.token = token;
     }
 
-    public String getOriginalUrl() {
+    public String getUrl() {
         return originalUrl;
     }
 
-    public void setOriginalUrl(String originalUrl) {
+    public void setUrl(String originalUrl) {
         this.originalUrl = originalUrl;
     }
 }

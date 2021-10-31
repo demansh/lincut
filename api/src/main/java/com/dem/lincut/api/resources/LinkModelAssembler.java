@@ -14,7 +14,7 @@ public class LinkModelAssembler extends RepresentationModelAssemblerSupport<Shor
     public LinkModel toModel(ShortLink shortLink) {
         LinkModel linkModel = createModelWithId(shortLink.getToken(), shortLink);
         linkModel.setToken(shortLink.getToken());
-        linkModel.setUrl(shortLink.getOriginalUrl());
+        linkModel.setUrl(shortLink.getUrl());
         return linkModel;
     }
 }
