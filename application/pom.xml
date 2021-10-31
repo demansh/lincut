@@ -53,21 +53,6 @@
 
     <profiles>
         <profile>
-            <id>mem</id>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>in-memory-persistence</artifactId>
-                </dependency>
-            </dependencies>
-            <properties>
-                <springProfile>mem</springProfile>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
             <id>sql</id>
             <dependencies>
                 <dependency>

@@ -18,7 +18,6 @@
         <module>core</module>
         <module>application</module>
         <module>bom</module>
-        <module>in-memory-persistence</module>
         <module>test</module>
         <module>api</module>
         <module>sql-persistence</module>
