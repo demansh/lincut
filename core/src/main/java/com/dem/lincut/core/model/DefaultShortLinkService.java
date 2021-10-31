@@ -4,12 +4,12 @@ import com.dem.lincut.core.adapters.ShortLinkRepository;
 import com.dem.lincut.core.exceptions.InvalidParameterException;
 import com.dem.lincut.core.exceptions.LinkNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
 @Service
 public class DefaultShortLinkService implements ShortLinkService {
@@ -44,7 +44,7 @@ public class DefaultShortLinkService implements ShortLinkService {
     }
 
     @Override
-    public List<ShortLink> getAll(Pageable pageable) {
+    public Page<ShortLink> getAll(Pageable pageable) {
         return shortLinkRepository.getAll(pageable);
     }
 }

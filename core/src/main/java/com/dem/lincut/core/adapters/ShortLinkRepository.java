@@ -1,9 +1,9 @@
 package com.dem.lincut.core.adapters;
 
 import com.dem.lincut.core.model.ShortLink;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface ShortLinkRepository {
@@ -11,5 +11,5 @@ public interface ShortLinkRepository {
 
     ShortLink create(String url);
 
-    List<ShortLink> getAll(Pageable pageable);
+    Page<ShortLink> getAll(Pageable pageable);
 }

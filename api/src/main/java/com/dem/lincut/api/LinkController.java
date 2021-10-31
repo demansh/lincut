@@ -2,10 +2,12 @@ package com.dem.lincut.api;
 
 import com.dem.lincut.api.resources.LinkModel;
 import com.dem.lincut.api.resources.LinkModelAssembler;
+import com.dem.lincut.core.model.ShortLink;
 import com.dem.lincut.core.model.ShortLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.CollectionModel;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,24 +17,30 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class LinkController {
     private final ShortLinkService shortLinkService;
+    private final PagedResourcesAssembler<ShortLink> pagedResourcesAssembler;
+    private final LinkModelAssembler linkModelAssembler;
 
     @Autowired
-    public LinkController(ShortLinkService shortLinkService) {
+    public LinkController(ShortLinkService shortLinkService,
+                          PagedResourcesAssembler<ShortLink> pagedResourcesAssembler,
+                          LinkModelAssembler linkModelAssembler) {
         this.shortLinkService = shortLinkService;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.linkModelAssembler = linkModelAssembler;
     }
 
     @GetMapping
-    public CollectionModel<LinkModel> getAll(Pageable pageable) {
-        return new LinkModelAssembler().toCollectionModel(shortLinkService.getAll(pageable));
+    public PagedModel<LinkModel> getAll(Pageable pageable) {
+        return pagedResourcesAssembler.toModel(shortLinkService.getAll(pageable), linkModelAssembler);
     }
 
     @GetMapping("/{token}")
     public LinkModel getLink(@PathVariable("token") String token) {
-        return new LinkModelAssembler().toModel(shortLinkService.getLinkByToken(token));
+        return linkModelAssembler.toModel(shortLinkService.getLinkByToken(token));
     }
 
     @PostMapping
     public LinkModel createLink(@RequestParam("url") String url) {
-        return new LinkModelAssembler().toModel(shortLinkService.createLink(url));
+        return linkModelAssembler.toModel(shortLinkService.createLink(url));
     }
 }

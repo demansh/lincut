@@ -3,15 +3,15 @@ package com.dem.lincut.api.resources;
 import org.springframework.hateoas.RepresentationModel;
 
 public class LinkModel extends RepresentationModel<LinkModel> {
-    private String originalUlr;
+    private String url;
     private String token;
 
-    public String getOriginalUlr() {
-        return originalUlr;
+    public String getUrl() {
+        return url;
     }
 
-    public void setOriginalUlr(String originalUlr) {
-        this.originalUlr = originalUlr;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getToken() {
