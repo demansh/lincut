@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(
-        path = "/links",
+        path = "/api/v1/links",
         produces = "application/json")
 @CrossOrigin(origins = "*")
 public class LinkController {
