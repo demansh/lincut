@@ -1,5 +1,9 @@
 server:
   port: 9999
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 ---
 spring:
   config:
