@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(path = "/")
@@ -21,8 +21,10 @@ public class RedirectController {
     }
 
     @GetMapping(path = "${token}")
-    public ModelAndView method(@PathVariable("token") String token) {
+    public RedirectView method(@PathVariable("token") String token) {
         String redirectUrl = shortLinkService.getLinkByToken(token).getUrl();
-        return new ModelAndView("redirect:" + redirectUrl);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(redirectUrl);
+        return redirectView;
     }
 }
