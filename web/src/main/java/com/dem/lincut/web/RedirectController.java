@@ -20,8 +20,8 @@ public class RedirectController {
         this.shortLinkService = shortLinkService;
     }
 
-    @GetMapping(path = "${token}")
-    public RedirectView method(@PathVariable("token") String token) {
+    @GetMapping(path = "{token}")
+    public RedirectView redirect(@PathVariable("token") String token) {
         String redirectUrl = shortLinkService.getLinkByToken(token).getUrl();
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(redirectUrl);
