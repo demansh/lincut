@@ -35,4 +35,63 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jooq</groupId>
+                    <artifactId>jooq-codegen-maven</artifactId>
+                    <executions>
+                        <execution>
+                            <id>generate-jooq-sources</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <generator>
+                                    <generate>
+                                        <pojos>true</pojos>
+                                        <daos>true</daos>
+                                        <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
+                                        <javaTimeTypes>true</javaTimeTypes>
+                                    </generate>
+                                    <database>
+                                        <name>org.jooq.meta.extensions.ddl.DDLDatabase</name>
+                                        <inputCatalog></inputCatalog>
+                                        <inputSchema>PUBLIC</inputSchema>
+                                        <outputSchemaToDefault>true</outputSchemaToDefault>
+                                        <outputCatalogToDefault>true</outputCatalogToDefault>
+                                        <properties>
+                                            <property>
+                                                <key>sort</key>
+                                                <value>semantic</value>
+                                            </property>
+                                            <property>
+                                                <key>scripts</key>
+                                                <value>src/main/resources/db/migration/*</value>
+                                            </property>
+                                        </properties>
+                                    </database>
+                                    <target>
+                                        <clean>true</clean>
+                                        <packageName>com.dem.lincut.persistence.sqlpersistence.repository</packageName>
+                                        <directory>target/generated-sources/jooq</directory>
+                                    </target>
+                                </generator>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jooq</groupId>
+                            <artifactId>jooq-meta-extensions</artifactId>
+                            <version>3.15.3</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
