@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping(path = "/")
+@RequestMapping(path = "/r")
 @CrossOrigin(origins = "*")
 public class RedirectController {
     private final ShortLinkService shortLinkService;
