@@ -22,15 +22,7 @@ public class DefaultShortLinkService implements ShortLinkService {
 
     @Override
     public ShortLink createLink(String url) {
-        if (url == null) {
-            throw new InvalidParameterException("Null url passed");
-        }
-        try {
-            URL validUrl = new URL(url);
-            return shortLinkRepository.create(validUrl.toString());
-        } catch (MalformedURLException e) {
-            throw new InvalidParameterException("Malformed url");
-        }
+        return shortLinkRepository.create(validateUrl(url));
     }
 
     @Override
@@ -46,5 +38,18 @@ public class DefaultShortLinkService implements ShortLinkService {
     @Override
     public Page<ShortLink> getAll(Pageable pageable) {
         return shortLinkRepository.getAll(pageable);
+    }
+
+    @Override
+    public String validateUrl(String url) {
+        if (url == null) {
+            throw new InvalidParameterException("Null url passed");
+        }
+        try {
+            URL validUrl = new URL(url);
+            return validUrl.toString();
+        } catch (MalformedURLException e) {
+            throw new InvalidParameterException("Malformed url");
+        }
     }
 }

@@ -12,4 +12,6 @@ public interface ShortLinkService {
     ShortLink getLinkByToken(String token);
 
     Page<ShortLink> getAll(Pageable pageParams);
+
+    String validateUrl(String url);
 }
